@@ -1,0 +1,186 @@
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.hero-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 32px;
+  align-items: end;
+  min-height: 360px;
+  padding: 48px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(182, 73, 43, 0.16), transparent 42%),
+    linear-gradient(225deg, rgba(42, 112, 115, 0.18), transparent 38%),
+    var(--surface);
+}
+
+.hero-copy {
+  max-width: 760px;
+}
+
+.eyebrow,
+.card-kicker,
+.status-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-copy h1 {
+  max-width: 780px;
+  margin: 0;
+  color: var(--heading);
+  font-size: clamp(2.25rem, 6vw, 5.25rem);
+  line-height: 0.96;
+}
+
+.hero-text {
+  max-width: 640px;
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.status-board,
+.boss-card,
+.drill-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+}
+
+.status-board {
+  padding: 24px;
+}
+
+.status-board strong {
+  display: block;
+  color: var(--heading);
+  font-size: 2.5rem;
+}
+
+.status-board small {
+  color: var(--muted);
+}
+
+.progress-track {
+  height: 10px;
+  margin: 18px 0 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--success));
+  transition: width 180ms ease;
+}
+
+.campaign-grid {
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.boss-card {
+  padding: 28px;
+}
+
+.boss-card h2,
+.drill-card h3 {
+  margin: 0;
+  color: var(--heading);
+}
+
+.boss-card p,
+.drill-card p,
+.boss-card li {
+  color: var(--muted);
+}
+
+.boss-card ul {
+  display: grid;
+  gap: 10px;
+  padding-left: 20px;
+  margin: 24px 0;
+}
+
+.drill-list {
+  display: grid;
+  gap: 16px;
+}
+
+.drill-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: center;
+  padding: 22px;
+}
+
+button {
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 0 18px;
+  color: #180f0c;
+  background: var(--accent);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(232, 122, 83, 0.34);
+  outline-offset: 3px;
+}
+
+button:disabled {
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+}
+
+button.complete {
+  color: #09241d;
+  background: var(--success);
+}
+
+@media (max-width: 860px) {
+  .hero-panel,
+  .campaign-grid,
+  .drill-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel {
+    min-height: auto;
+    padding: 28px;
+  }
+
+  .status-board {
+    max-width: none;
+  }
+
+  .drill-card button {
+    width: 100%;
+  }
+}
