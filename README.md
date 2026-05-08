@@ -1,17 +1,25 @@
 # Code Souls
 
-Code Souls is a gamified programming tutor for beginners. Learners face hard
-"boss" programming puzzles, retreat into smaller practice drills when stuck,
-gain XP from the missing concepts, then return to solve the larger problem.
+Code Souls is a gamified learning app for becoming an AI engineer from a
+beginner starting point. Learners face difficult "boss" challenges, retreat into
+smaller prerequisite drills when stuck, gain XP, then return with the exact
+skills needed to solve the bigger problem.
+
+The end goal is not only learning syntax. The end goal is becoming able to
+build, debug, evaluate, and deploy AI-powered software while understanding the
+math and computer science ideas underneath it.
 
 ## Current Prototype
 
 The first version is a React + TypeScript app that demonstrates the core loop:
 
-- a boss puzzle that requires several concepts
-- smaller drills for variables, loops, and functions
+- a boss puzzle that requires several prerequisite concepts
+- smaller drills for beginner programming foundations
 - XP gained by completing drills
 - a readiness meter that unlocks the boss puzzle
+
+The current UI still starts with programming basics because AI engineering needs
+those fundamentals first.
 
 ## How To Run
 
@@ -24,27 +32,32 @@ Then open the local URL printed by Vite.
 
 ## Product Direction
 
-The app should be built in stages:
+The app should be built as an AI engineering campaign with connected paths:
 
-1. **Learning map**
-   Show concepts as connected areas. A harder puzzle should list the simpler
-   skills that prepare the learner for it.
+1. **Programming foundations**
+   Variables, data structures, functions, debugging, tests, Git, APIs, and
+   deployment.
 
-2. **Puzzle engine**
-   Start with guided prompts and multiple-choice checks. Later, add a real code
-   editor and automated tests.
+2. **Math for AI**
+   Probability, statistics, linear algebra, calculus intuition, optimization,
+   and evaluation metrics.
 
-3. **XP and mastery**
-   XP should reward practice, but mastery should come from proving the learner
-   can solve the concept without hints.
+3. **Data and machine learning**
+   Data cleaning, feature engineering, model training, validation, overfitting,
+   and classical ML algorithms.
 
-4. **Boss encounters**
-   Boss puzzles should combine multiple skills, such as variables, loops,
-   functions, debugging, and deployment.
+4. **Deep learning**
+   Neural networks, embeddings, transformers, fine-tuning, inference, and model
+   limitations.
 
-5. **Project campaigns**
-   End-game paths should guide the learner through building, debugging, testing,
-   and deploying complete apps.
+5. **AI tools and applications**
+   Prompting, agents, retrieval-augmented generation, vector databases, model
+   APIs, evaluation, safety checks, and production monitoring.
+
+6. **Boss projects**
+   Larger projects that combine several paths, such as building a chatbot with
+   retrieval, evaluating model outputs, deploying an AI API, or debugging a
+   failed training run.
 
 ## Recommended Stack
 
@@ -53,15 +66,18 @@ The app should be built in stages:
 - **Monaco Editor** later for in-browser code editing
 - **Vitest** later for puzzle test cases
 - **Local storage** first for progress
+- **Python sandboxing** later for AI and data exercises
 - **Supabase or Postgres** later for accounts, saved progress, and analytics
+- **Model provider APIs** later for AI-tooling missions
 
 ## Learning Goal
 
 The app should eventually teach a learner to:
 
-- read unfamiliar code
-- break problems into smaller functions
-- debug errors calmly
-- use Git and GitHub
-- test code
-- deploy a working project
+- write and debug useful programs
+- understand probability, statistics, and core ML concepts
+- work with data and evaluate model performance
+- build simple machine learning and deep learning workflows
+- use AI coding tools and model APIs effectively
+- design retrieval and agent-style AI applications
+- test, monitor, and deploy AI-powered software
