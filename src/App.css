@@ -20,7 +20,7 @@
 }
 
 .hero-copy {
-  max-width: 760px;
+  max-width: 780px;
 }
 
 .eyebrow,
@@ -36,7 +36,7 @@
 }
 
 .hero-copy h1 {
-  max-width: 840px;
+  max-width: 880px;
   margin: 0;
   color: var(--heading);
   font-size: clamp(2.25rem, 6vw, 5rem);
@@ -44,16 +44,17 @@
 }
 
 .hero-text {
-  max-width: 680px;
+  max-width: 700px;
   margin: 24px 0 0;
   color: var(--muted);
   font-size: 1.08rem;
 }
 
 .status-board,
-.lesson-path,
+.campaign-map,
 .lesson-card,
-.boss-card {
+.boss-card,
+.final-boss {
   border: 1px solid var(--border);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.04);
@@ -90,55 +91,55 @@
   transition: width 180ms ease;
 }
 
+.campaign-map {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+  padding: 14px;
+}
+
+.campaign-node {
+  display: grid;
+  gap: 8px;
+  min-height: 132px;
+  border-color: rgba(244, 238, 229, 0.08);
+  padding: 16px;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.campaign-node span {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.86rem;
+}
+
+.campaign-node strong {
+  color: var(--heading);
+  line-height: 1.2;
+}
+
+.campaign-node small {
+  color: var(--muted);
+}
+
+.campaign-node.active {
+  border-color: rgba(232, 122, 83, 0.48);
+  background: rgba(232, 122, 83, 0.12);
+}
+
 .learning-layout {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr) 340px;
+  grid-template-columns: minmax(0, 1fr) 360px;
   gap: 20px;
   margin-top: 24px;
 }
 
-.lesson-path {
-  display: grid;
-  gap: 10px;
-  align-self: start;
-  padding: 14px;
-}
-
-.path-step {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 4px 12px;
-  width: 100%;
-  min-height: 78px;
-  border-color: transparent;
-  padding: 14px;
-  color: var(--text);
-  background: transparent;
-  text-align: left;
-}
-
-.path-step span {
-  grid-row: span 2;
-  color: var(--accent);
-  font-family: var(--mono);
-  font-size: 0.9rem;
-}
-
-.path-step strong {
-  color: var(--heading);
-}
-
-.path-step small {
-  color: var(--muted);
-}
-
-.path-step.active {
-  border-color: rgba(232, 122, 83, 0.42);
-  background: rgba(232, 122, 83, 0.1);
-}
-
 .lesson-card,
-.boss-card {
+.boss-card,
+.final-boss {
   padding: 28px;
 }
 
@@ -149,30 +150,49 @@
 
 .lesson-card h2,
 .boss-card h2,
-.practice-panel h3 {
+.final-boss h2,
+.milestone-card h3,
+.practice-panel h4 {
   margin: 0;
   color: var(--heading);
 }
 
 .lesson-card h2,
-.boss-card h2 {
+.boss-card h2,
+.final-boss h2 {
   font-size: 2rem;
 }
 
 .lesson-card p,
 .boss-card p,
+.final-boss p,
+.milestone-card p,
 .requirement-row small {
   color: var(--muted);
 }
 
+.milestone-list {
+  display: grid;
+  gap: 16px;
+}
+
+.milestone-card {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid rgba(244, 238, 229, 0.12);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
 .practice-panel {
-  padding: 18px;
+  padding: 16px;
   border: 1px solid rgba(244, 238, 229, 0.12);
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.16);
 }
 
-.practice-panel h3 {
+.practice-panel h4 {
   font-size: 1rem;
 }
 
@@ -217,6 +237,39 @@ code {
   color: var(--heading);
 }
 
+.final-boss {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+  margin-top: 24px;
+  background:
+    linear-gradient(90deg, rgba(110, 198, 164, 0.12), transparent 55%),
+    rgba(255, 255, 255, 0.04);
+}
+
+.final-requirements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  max-width: 460px;
+}
+
+.final-requirements span {
+  border: 1px solid rgba(244, 238, 229, 0.16);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.final-requirements span.ready {
+  border-color: rgba(110, 198, 164, 0.44);
+  color: #d9fff0;
+  background: rgba(110, 198, 164, 0.12);
+}
+
 button {
   min-height: 44px;
   border: 1px solid transparent;
@@ -251,7 +304,8 @@ button.complete {
 
 @media (max-width: 1040px) {
   .hero-panel,
-  .learning-layout {
+  .learning-layout,
+  .final-boss {
     grid-template-columns: 1fr;
   }
 
@@ -260,13 +314,18 @@ button.complete {
     padding: 28px;
   }
 
-  .lesson-path {
+  .campaign-map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .final-requirements {
+    justify-content: flex-start;
+    max-width: none;
   }
 }
 
 @media (max-width: 640px) {
-  .lesson-path {
+  .campaign-map {
     grid-template-columns: 1fr;
   }
 }
