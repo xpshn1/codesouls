@@ -91,6 +91,7 @@
   display: block;
   margin: 0 0 8px;
   color: var(--accent);
+  font-family: var(--font-accent);
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.13em;
@@ -105,6 +106,8 @@
 .milestone-card h3 {
   margin: 0;
   color: var(--heading);
+  font-family: var(--font-heading);
+  font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -128,7 +131,7 @@
   padding: 7px 10px;
   color: var(--muted);
   background: rgba(255, 255, 255, 0.035);
-  font-family: var(--mono);
+  font-family: var(--font-accent);
   font-size: 0.72rem;
 }
 
@@ -166,7 +169,7 @@
   background:
     radial-gradient(circle at 50% 35%, rgba(255, 43, 156, 0.45), transparent 28%),
     rgba(0, 0, 0, 0.28);
-  font-family: var(--mono);
+  font-family: var(--font-accent);
   font-weight: 800;
 }
 
@@ -176,13 +179,16 @@
 .status-row span,
 .node-footer span {
   color: var(--muted);
-  font-family: var(--mono);
+  font-family: var(--font-accent);
   font-size: 0.72rem;
 }
 
 .pilot-card strong {
   display: block;
   color: var(--heading);
+  font-family: var(--font-heading);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .campaign-nav {
@@ -213,17 +219,20 @@
 .nav-node span {
   grid-row: span 2;
   color: var(--accent);
-  font-family: var(--mono);
+  font-family: var(--font-accent);
 }
 
 .nav-node strong {
   color: var(--heading);
+  font-family: var(--font-heading);
   font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .nav-node small {
   color: var(--muted);
-  font-family: var(--mono);
+  font-family: var(--font-accent);
   font-size: 0.68rem;
 }
 
@@ -241,7 +250,7 @@
 .system-feed p {
   margin: 8px 0 0;
   color: var(--muted);
-  font-family: var(--mono);
+  font-family: var(--font-accent);
   font-size: 0.72rem;
 }
 
@@ -314,7 +323,7 @@
   border: 1px solid rgba(255, 43, 156, 0.52);
   color: var(--heading);
   background: rgba(20, 10, 42, 0.92);
-  font-family: var(--mono);
+  font-family: var(--font-accent);
   font-weight: 900;
   box-shadow: 0 0 22px rgba(255, 43, 156, 0.22);
   clip-path: polygon(50% 0, 100% 28%, 100% 72%, 50% 100%, 0 72%, 0 28%);
@@ -366,7 +375,7 @@
 .status-row strong {
   display: block;
   color: var(--heading);
-  font-family: var(--mono);
+  font-family: var(--font-accent);
   font-size: 1.45rem;
 }
 
@@ -393,13 +402,16 @@
 
 .requirement-row span {
   color: var(--success);
-  font-family: var(--mono);
+  font-family: var(--font-accent);
   font-size: 0.72rem;
 }
 
 .requirement-row strong {
   display: block;
   color: var(--heading);
+  font-family: var(--font-heading);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .requirement-row small {
@@ -420,7 +432,7 @@
 
 .section-heading p {
   color: var(--muted);
-  font-family: var(--mono);
+  font-family: var(--font-accent);
   font-size: 0.78rem;
 }
 
@@ -502,7 +514,8 @@ button {
   padding: 0 16px;
   color: #1b071b;
   background: var(--accent);
-  font: inherit;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
   font-weight: 900;
   letter-spacing: 0.03em;
   text-transform: uppercase;
