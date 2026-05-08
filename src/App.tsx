@@ -262,101 +262,119 @@ function App() {
     )
   }
 
+  const activeCampaignReadiness = getCampaignReadiness(activeCampaign)
+
   return (
-    <main className="app-shell">
-      <section className="hero-panel" aria-labelledby="page-title">
-        <div className="hero-copy">
-          <p className="eyebrow">Code Souls</p>
-          <h1 id="page-title">Become an AI engineer through boss battles.</h1>
-          <p className="hero-text">
-            Progress from programming basics into math, machine learning, deep
-            learning, AI tools, evals, and production-ready AI systems.
-          </p>
+    <main className="console-shell">
+      <header className="command-bar" aria-label="Code Souls command bar">
+        <div className="brand-mark" aria-hidden="true">
+          <span />
         </div>
+        <div>
+          <p className="eyebrow">Code Souls // Terminal v0.2</p>
+          <h1 id="page-title">AI Engineer Command Deck</h1>
+        </div>
+        <div className="command-meta">
+          <span>USER: ZERO.NORTH</span>
+          <span>XP: {xp}</span>
+          <span>SYNC: {overallReadiness}%</span>
+        </div>
+      </header>
 
-        <div className="status-board" aria-label="Current learner status">
-          <span className="status-label">AI Engineer Build</span>
-          <strong>{xp} XP</strong>
-          <div
-            className="progress-track"
-            aria-label={`${overallReadiness}% ready`}
-          >
-            <span style={{ width: `${overallReadiness}%` }} />
+      <div className="cockpit-grid">
+        <aside className="side-rail panel" aria-label="Learning navigation">
+          <div className="pilot-card">
+            <div className="pilot-avatar" aria-hidden="true">
+              AI
+            </div>
+            <div>
+              <span>CADET</span>
+              <strong>ZERO.NORTH</strong>
+              <small>AI Engineer Build</small>
+            </div>
           </div>
-          <small>{overallReadiness}% ready for the final boss project</small>
-        </div>
-      </section>
 
-      <section className="campaign-map" aria-label="AI engineering campaigns">
-        {campaigns.map((campaign, index) => {
-          const readiness = getCampaignReadiness(campaign)
-          const isActive = campaign.id === activeCampaign.id
+          <nav className="campaign-nav" aria-label="Campaigns">
+            {campaigns.map((campaign, index) => {
+              const readiness = getCampaignReadiness(campaign)
+              const isActive = campaign.id === activeCampaign.id
 
-          return (
-            <button
-              type="button"
-              className={`campaign-node ${isActive ? 'active' : ''}`}
-              key={campaign.id}
-              onClick={() => setActiveCampaignId(campaign.id)}
-            >
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <strong>{campaign.title}</strong>
-              <small>
-                {campaign.domain} · {readiness}% mastered
-              </small>
-            </button>
-          )
-        })}
-      </section>
+              return (
+                <button
+                  type="button"
+                  className={`nav-node ${isActive ? 'active' : ''}`}
+                  key={campaign.id}
+                  onClick={() => setActiveCampaignId(campaign.id)}
+                >
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <strong>{campaign.title}</strong>
+                  <small>
+                    {campaign.domain} / {readiness}%
+                  </small>
+                </button>
+              )
+            })}
+          </nav>
 
-      <section className="learning-layout" aria-label="Selected campaign">
-        <article className="lesson-card">
-          <div>
-            <span className="card-kicker">{activeCampaign.difficulty}</span>
+          <div className="system-feed">
+            <span>SYS.LOG</span>
+            <p>Protocol start: AI engineering path engaged.</p>
+            <p>Tip: train missing nodes before boss entry.</p>
+          </div>
+        </aside>
+
+        <section className="main-viewport panel" aria-labelledby="page-title">
+          <div className="viewport-copy">
+            <span className="card-kicker">Current Sector</span>
             <h2>{activeCampaign.title}</h2>
             <p>{activeCampaign.summary}</p>
           </div>
 
-          <div className="milestone-list">
-            {activeCampaign.milestones.map((milestone) => {
-              const isComplete = completedMilestones.includes(milestone.id)
+          <div className="orbital-map" aria-hidden="true">
+            <div className="orbit orbit-one" />
+            <div className="orbit orbit-two" />
+            <div className="orbit orbit-three" />
+            {campaigns.map((campaign, index) => {
+              const isActive = campaign.id === activeCampaign.id
 
               return (
-                <article className="milestone-card" key={milestone.id}>
-                  <div>
-                    <span className="card-kicker">{milestone.concept}</span>
-                    <h3>{milestone.title}</h3>
-                    <p>{milestone.summary}</p>
-                  </div>
-
-                  <div className="practice-panel">
-                    <h4>Practice Goal</h4>
-                    <p>{milestone.practice}</p>
-                  </div>
-
-                  <pre aria-label={`${milestone.concept} example`}>
-                    <code>{milestone.example}</code>
-                  </pre>
-
-                  <button
-                    type="button"
-                    className={isComplete ? 'complete' : ''}
-                    onClick={() => toggleMilestone(milestone.id)}
-                  >
-                    {isComplete ? 'Mark as still training' : `Train for ${milestone.xp} XP`}
-                  </button>
-                </article>
+                <button
+                  type="button"
+                  className={`orbital-node node-${index + 1} ${
+                    isActive ? 'active' : ''
+                  }`}
+                  key={campaign.id}
+                  onClick={() => setActiveCampaignId(campaign.id)}
+                  aria-label={campaign.title}
+                >
+                  {index + 1}
+                </button>
               )
             })}
           </div>
-        </article>
 
-        <article className="boss-card">
-          <span className="card-kicker">Campaign Boss</span>
+          <div className="status-row">
+            <div>
+              <span>SECTOR MASTERY</span>
+              <strong>{activeCampaignReadiness}%</strong>
+            </div>
+            <div>
+              <span>GLOBAL SYNC</span>
+              <strong>{overallReadiness}%</strong>
+            </div>
+            <div>
+              <span>XP RESERVE</span>
+              <strong>{xp}</strong>
+            </div>
+          </div>
+        </section>
+
+        <aside className="mission-terminal panel" aria-label="Selected campaign">
+          <span className="card-kicker">{activeCampaign.difficulty}</span>
           <h2>{activeCampaign.boss}</h2>
           <p>
-            This boss combines every milestone in the selected campaign. If it
-            feels too hard, train the missing prerequisites first.
+            Campaign boss locked to prerequisite mastery. Train every listed
+            node, then return for the combined challenge.
           </p>
 
           <div className="requirement-list">
@@ -365,7 +383,7 @@ function App() {
 
               return (
                 <div className="requirement-row" key={milestone.id}>
-                  <span aria-hidden="true">{isComplete ? '✓' : '○'}</span>
+                  <span aria-hidden="true">{isComplete ? 'OK' : '--'}</span>
                   <div>
                     <strong>{milestone.concept}</strong>
                     <small>{milestone.practice}</small>
@@ -375,18 +393,61 @@ function App() {
             })}
           </div>
 
-          <button
-            type="button"
-            disabled={getCampaignReadiness(activeCampaign) < 100}
-          >
-            {getCampaignReadiness(activeCampaign) === 100
+          <button type="button" disabled={activeCampaignReadiness < 100}>
+            {activeCampaignReadiness === 100
               ? 'Enter campaign boss'
-              : 'Master campaign milestones'}
+              : 'Master campaign nodes'}
           </button>
-        </article>
+        </aside>
+      </div>
+
+      <section className="training-console panel" aria-label="Training nodes">
+        <div className="section-heading">
+          <div>
+            <span className="card-kicker">Training Deck</span>
+            <h2>{activeCampaign.title} Nodes</h2>
+          </div>
+          <p>{activeCampaign.domain} / {activeCampaign.difficulty}</p>
+        </div>
+
+        <div className="milestone-list">
+          {activeCampaign.milestones.map((milestone) => {
+            const isComplete = completedMilestones.includes(milestone.id)
+
+            return (
+              <article className="milestone-card" key={milestone.id}>
+                <div>
+                  <span className="card-kicker">{milestone.concept}</span>
+                  <h3>{milestone.title}</h3>
+                  <p>{milestone.summary}</p>
+                </div>
+
+                <div className="practice-panel">
+                  <h4>Practice Goal</h4>
+                  <p>{milestone.practice}</p>
+                </div>
+
+                <pre aria-label={`${milestone.concept} example`}>
+                  <code>{milestone.example}</code>
+                </pre>
+
+                <div className="node-footer">
+                  <button
+                    type="button"
+                    className={isComplete ? 'complete' : ''}
+                    onClick={() => toggleMilestone(milestone.id)}
+                  >
+                    {isComplete ? 'Reopen node' : `Train for ${milestone.xp} XP`}
+                  </button>
+                  <span>{isComplete ? 'COMPLETE' : 'STANDBY'}</span>
+                </div>
+              </article>
+            )
+          })}
+        </div>
       </section>
 
-      <section className="final-boss" aria-label="Final boss project">
+      <section className="final-boss panel" aria-label="Final boss project">
         <div>
           <span className="card-kicker">Final Boss</span>
           <h2>Ship an AI Engineer Project</h2>
