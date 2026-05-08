@@ -1,56 +1,87 @@
 import { useMemo, useState } from 'react'
 import './App.css'
 
-type Drill = {
-  id: number
+type Lesson = {
+  id: string
   title: string
   concept: string
   xp: number
-  prompt: string
+  difficulty: 'Beginner' | 'Apprentice' | 'Boss Prep'
+  summary: string
+  practice: string
+  code: string
 }
 
-const drills: Drill[] = [
+const lessons: Lesson[] = [
   {
-    id: 1,
+    id: 'variables',
     title: 'Variable Ashes',
     concept: 'Variables',
     xp: 20,
-    prompt: 'Store a player name and reuse it in a message.',
+    difficulty: 'Beginner',
+    summary: 'A variable stores a value so your program can reuse it later.',
+    practice: 'Create a player name and use it inside a sentence.',
+    code: 'const playerName = "Ash";\nconst message = `Rise, ${playerName}.`;',
   },
   {
-    id: 2,
+    id: 'arrays',
+    title: 'Inventory of Embers',
+    concept: 'Arrays',
+    xp: 25,
+    difficulty: 'Beginner',
+    summary: 'An array stores a list of values in one place.',
+    practice: 'Put several attack values into one list.',
+    code: 'const attacks = [12, 8, 15];\nconst firstAttack = attacks[0];',
+  },
+  {
+    id: 'loops',
     title: 'Loop Gauntlet',
     concept: 'Loops',
     xp: 30,
-    prompt: 'Repeat an action until every item in a list has been checked.',
+    difficulty: 'Apprentice',
+    summary: 'A loop repeats work for every item in a list.',
+    practice: 'Add each attack value to a running total.',
+    code: 'let total = 0;\nfor (const attack of attacks) {\n  total += attack;\n}',
   },
   {
-    id: 3,
+    id: 'functions',
     title: 'Function Forge',
     concept: 'Functions',
-    xp: 40,
-    prompt: 'Break a larger task into a named reusable step.',
+    xp: 35,
+    difficulty: 'Boss Prep',
+    summary: 'A function wraps steps into a reusable command.',
+    practice: 'Move the damage math into a named function.',
+    code: 'function getTotalDamage(attacks) {\n  return attacks.reduce((total, attack) => total + attack, 0);\n}',
   },
 ]
 
+const bossRequirements = lessons.map((lesson) => lesson.id)
+
 function App() {
-  const [completedDrills, setCompletedDrills] = useState<number[]>([])
+  const [completedLessons, setCompletedLessons] = useState<string[]>([])
+  const [activeLessonId, setActiveLessonId] = useState(lessons[0].id)
+
+  const activeLesson =
+    lessons.find((lesson) => lesson.id === activeLessonId) ?? lessons[0]
 
   const xp = useMemo(
     () =>
-      drills
-        .filter((drill) => completedDrills.includes(drill.id))
-        .reduce((total, drill) => total + drill.xp, 0),
-    [completedDrills],
+      lessons
+        .filter((lesson) => completedLessons.includes(lesson.id))
+        .reduce((total, lesson) => total + lesson.xp, 0),
+    [completedLessons],
   )
 
-  const readiness = Math.min(Math.round((xp / 90) * 100), 100)
+  const readiness = Math.round(
+    (completedLessons.length / bossRequirements.length) * 100,
+  )
+  const isBossUnlocked = readiness === 100
 
-  function toggleDrill(drillId: number) {
-    setCompletedDrills((current) =>
-      current.includes(drillId)
-        ? current.filter((id) => id !== drillId)
-        : [...current, drillId],
+  function toggleLesson(lessonId: string) {
+    setCompletedLessons((current) =>
+      current.includes(lessonId)
+        ? current.filter((id) => id !== lessonId)
+        : [...current, lessonId],
     )
   }
 
@@ -59,10 +90,10 @@ function App() {
       <section className="hero-panel" aria-labelledby="page-title">
         <div className="hero-copy">
           <p className="eyebrow">Code Souls</p>
-          <h1 id="page-title">Defeat programming concepts by training smarter.</h1>
+          <h1 id="page-title">Train on smaller concepts, then face the boss.</h1>
           <p className="hero-text">
-            Face a hard boss puzzle, retreat into smaller drills when stuck, gain
-            XP, then return with the exact skills needed to win.
+            This first campaign teaches the chain behind a damage calculator:
+            variables, arrays, loops, and functions.
           </p>
         </div>
 
@@ -76,46 +107,84 @@ function App() {
         </div>
       </section>
 
-      <section className="campaign-grid" aria-label="Learning campaign">
-        <article className="boss-card">
-          <span className="card-kicker">Boss Gate</span>
-          <h2>Write a damage calculator</h2>
-          <p>
-            Combine variables, conditionals, loops, and functions to calculate
-            combat damage from a list of attacks.
-          </p>
-          <ul>
-            <li>Read attack values from an array</li>
-            <li>Apply a critical-hit condition</li>
-            <li>Return the final total from a function</li>
-          </ul>
-          <button type="button" disabled={readiness < 100}>
-            {readiness < 100 ? 'Train before entering' : 'Enter boss puzzle'}
+      <section className="learning-layout" aria-label="Learning campaign">
+        <aside className="lesson-path" aria-label="Concept path">
+          {lessons.map((lesson, index) => {
+            const isComplete = completedLessons.includes(lesson.id)
+            const isActive = lesson.id === activeLesson.id
+
+            return (
+              <button
+                type="button"
+                className={`path-step ${isActive ? 'active' : ''}`}
+                key={lesson.id}
+                onClick={() => setActiveLessonId(lesson.id)}
+              >
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <strong>{lesson.concept}</strong>
+                <small>{isComplete ? 'Mastered' : lesson.difficulty}</small>
+              </button>
+            )
+          })}
+        </aside>
+
+        <article className="lesson-card">
+          <div>
+            <span className="card-kicker">{activeLesson.difficulty}</span>
+            <h2>{activeLesson.title}</h2>
+            <p>{activeLesson.summary}</p>
+          </div>
+
+          <div className="practice-panel">
+            <h3>Practice Goal</h3>
+            <p>{activeLesson.practice}</p>
+          </div>
+
+          <pre aria-label={`${activeLesson.concept} example code`}>
+            <code>{activeLesson.code}</code>
+          </pre>
+
+          <button
+            type="button"
+            className={
+              completedLessons.includes(activeLesson.id) ? 'complete' : ''
+            }
+            onClick={() => toggleLesson(activeLesson.id)}
+          >
+            {completedLessons.includes(activeLesson.id)
+              ? 'Mark as still practicing'
+              : `Practice for ${activeLesson.xp} XP`}
           </button>
         </article>
 
-        <div className="drill-list">
-          {drills.map((drill) => {
-            const isComplete = completedDrills.includes(drill.id)
+        <article className="boss-card">
+          <span className="card-kicker">Boss Gate</span>
+          <h2>Damage Calculator</h2>
+          <p>
+            Build a function that receives a list of attack values, loops through
+            them, and returns the final damage total.
+          </p>
 
-            return (
-              <article className="drill-card" key={drill.id}>
-                <div>
-                  <span className="card-kicker">{drill.concept}</span>
-                  <h3>{drill.title}</h3>
-                  <p>{drill.prompt}</p>
+          <div className="requirement-list">
+            {lessons.map((lesson) => {
+              const isComplete = completedLessons.includes(lesson.id)
+
+              return (
+                <div className="requirement-row" key={lesson.id}>
+                  <span aria-hidden="true">{isComplete ? '✓' : '○'}</span>
+                  <div>
+                    <strong>{lesson.concept}</strong>
+                    <small>{lesson.practice}</small>
+                  </div>
                 </div>
-                <button
-                  type="button"
-                  className={isComplete ? 'complete' : ''}
-                  onClick={() => toggleDrill(drill.id)}
-                >
-                  {isComplete ? 'Practiced' : `Gain ${drill.xp} XP`}
-                </button>
-              </article>
-            )
-          })}
-        </div>
+              )
+            })}
+          </div>
+
+          <button type="button" disabled={!isBossUnlocked}>
+            {isBossUnlocked ? 'Enter boss puzzle' : 'Master all prerequisites'}
+          </button>
+        </article>
       </section>
     </main>
   )
