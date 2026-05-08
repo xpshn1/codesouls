@@ -23,12 +23,12 @@
   position: relative;
   border: 1px solid var(--border);
   background:
-    linear-gradient(135deg, rgba(255, 43, 156, 0.09), transparent 36%),
-    linear-gradient(225deg, rgba(117, 67, 255, 0.11), transparent 34%),
-    rgba(12, 8, 28, 0.82);
+    linear-gradient(135deg, rgba(212, 222, 149, 0.09), transparent 36%),
+    linear-gradient(225deg, rgba(99, 107, 47, 0.11), transparent 34%),
+    rgba(61, 65, 39, 0.82);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.035),
-    0 0 34px rgba(255, 43, 156, 0.13);
+    0 0 34px rgba(212, 222, 149, 0.13);
   clip-path: polygon(
     0 14px,
     14px 0,
@@ -72,8 +72,8 @@
   place-items: center;
   width: 58px;
   aspect-ratio: 1;
-  border: 1px solid rgba(255, 43, 156, 0.5);
-  background: rgba(255, 43, 156, 0.1);
+  border: 1px solid rgba(212, 222, 149, 0.5);
+  background: rgba(212, 222, 149, 0.1);
   clip-path: polygon(16% 0, 100% 0, 100% 84%, 84% 100%, 0 100%, 0 16%);
 }
 
@@ -82,7 +82,7 @@
   aspect-ratio: 1;
   border: 2px solid var(--accent);
   border-radius: 50%;
-  box-shadow: 0 0 22px rgba(255, 43, 156, 0.65);
+  box-shadow: 0 0 22px rgba(212, 222, 149, 0.65);
 }
 
 .eyebrow,
@@ -127,7 +127,7 @@
 
 .command-meta span,
 .final-requirements span {
-  border: 1px solid rgba(255, 43, 156, 0.24);
+  border: 1px solid rgba(212, 222, 149, 0.24);
   padding: 7px 10px;
   color: var(--muted);
   background: rgba(255, 255, 255, 0.035);
@@ -156,7 +156,7 @@
   gap: 12px;
   align-items: center;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 43, 156, 0.18);
+  border-bottom: 1px solid rgba(212, 222, 149, 0.18);
 }
 
 .pilot-avatar {
@@ -164,10 +164,10 @@
   place-items: center;
   width: 62px;
   aspect-ratio: 1;
-  border: 1px solid rgba(255, 43, 156, 0.5);
+  border: 1px solid rgba(212, 222, 149, 0.5);
   color: var(--accent);
   background:
-    radial-gradient(circle at 50% 35%, rgba(255, 43, 156, 0.45), transparent 28%),
+    radial-gradient(circle at 50% 35%, rgba(212, 222, 149, 0.45), transparent 28%),
     rgba(0, 0, 0, 0.28);
   font-family: var(--font-accent);
   font-weight: 800;
@@ -237,13 +237,13 @@
 }
 
 .nav-node.active {
-  border-color: rgba(255, 43, 156, 0.48);
-  background: rgba(255, 43, 156, 0.18);
+  border-color: rgba(212, 222, 149, 0.48);
+  background: rgba(212, 222, 149, 0.18);
 }
 
 .system-feed {
   margin-top: 18px;
-  border-top: 1px solid rgba(255, 43, 156, 0.18);
+  border-top: 1px solid rgba(212, 222, 149, 0.18);
   padding-top: 14px;
 }
 
@@ -283,10 +283,10 @@
   position: relative;
   min-height: 280px;
   margin: 18px 0;
-  border: 1px solid rgba(117, 67, 255, 0.2);
+  border: 1px solid rgba(99, 107, 47, 0.2);
   background:
-    radial-gradient(circle at 52% 50%, rgba(255, 43, 156, 0.32), transparent 6%),
-    radial-gradient(circle at 52% 50%, rgba(117, 67, 255, 0.2), transparent 28%),
+    radial-gradient(circle at 52% 50%, rgba(212, 222, 149, 0.32), transparent 6%),
+    radial-gradient(circle at 52% 50%, rgba(99, 107, 47, 0.2), transparent 28%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
 }
@@ -294,7 +294,7 @@
 .orbit {
   position: absolute;
   inset: 50%;
-  border: 1px solid rgba(255, 43, 156, 0.22);
+  border: 1px solid rgba(212, 222, 149, 0.22);
   border-radius: 50%;
   transform: translate(-50%, -50%) rotate(-18deg);
 }
@@ -320,19 +320,19 @@
   place-items: center;
   width: 42px;
   aspect-ratio: 1;
-  border: 1px solid rgba(255, 43, 156, 0.52);
+  border: 1px solid rgba(212, 222, 149, 0.52);
   color: var(--heading);
-  background: rgba(20, 10, 42, 0.92);
+  background: rgba(61, 65, 39, 0.92);
   font-family: var(--font-accent);
   font-weight: 900;
-  box-shadow: 0 0 22px rgba(255, 43, 156, 0.22);
+  box-shadow: 0 0 22px rgba(212, 222, 149, 0.22);
   clip-path: polygon(50% 0, 100% 28%, 100% 72%, 50% 100%, 0 72%, 0 28%);
 }
 
 .orbital-node.active {
   background: var(--accent);
-  color: #17091d;
-  box-shadow: 0 0 34px rgba(255, 43, 156, 0.75);
+  color: #171a0d;
+  box-shadow: 0 0 34px rgba(212, 222, 149, 0.75);
 }
 
 .node-1 {
@@ -367,7 +367,7 @@
 }
 
 .status-row div {
-  border: 1px solid rgba(255, 43, 156, 0.16);
+  border: 1px solid rgba(212, 222, 149, 0.16);
   padding: 12px;
   background: rgba(0, 0, 0, 0.2);
 }
@@ -396,7 +396,7 @@
   grid-template-columns: 34px 1fr;
   gap: 10px;
   align-items: start;
-  border-bottom: 1px solid rgba(255, 43, 156, 0.13);
+  border-bottom: 1px solid rgba(212, 222, 149, 0.13);
   padding-bottom: 12px;
 }
 
@@ -446,9 +446,9 @@
 .milestone-card {
   display: grid;
   gap: 14px;
-  border: 1px solid rgba(255, 43, 156, 0.2);
+  border: 1px solid rgba(212, 222, 149, 0.2);
   padding: 16px;
-  background: rgba(3, 3, 18, 0.42);
+  background: rgba(17, 20, 7, 0.58);
   clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
 }
 
@@ -457,9 +457,9 @@
 }
 
 .practice-panel {
-  border: 1px solid rgba(117, 67, 255, 0.24);
+  border: 1px solid rgba(99, 107, 47, 0.24);
   padding: 12px;
-  background: rgba(117, 67, 255, 0.08);
+  background: rgba(99, 107, 47, 0.08);
 }
 
 .practice-panel h4 {
@@ -471,10 +471,10 @@ pre {
   min-height: 112px;
   margin: 0;
   overflow-x: auto;
-  border: 1px solid rgba(255, 43, 156, 0.18);
+  border: 1px solid rgba(212, 222, 149, 0.18);
   padding: 14px;
-  color: #f6d6ff;
-  background: #080713;
+  color: #f4f8c7;
+  background: #111407;
 }
 
 code {
@@ -503,16 +503,16 @@ code {
 }
 
 .final-requirements span.ready {
-  border-color: rgba(72, 255, 189, 0.52);
+  border-color: rgba(186, 192, 149, 0.52);
   color: #d9fff0;
-  background: rgba(72, 255, 189, 0.12);
+  background: rgba(186, 192, 149, 0.12);
 }
 
 button {
   min-height: 42px;
-  border: 1px solid rgba(255, 43, 156, 0.42);
+  border: 1px solid rgba(212, 222, 149, 0.42);
   padding: 0 16px;
-  color: #1b071b;
+  color: #171a0d;
   background: var(--accent);
   font-family: var(--font-heading);
   font-size: 0.88rem;
@@ -527,19 +527,19 @@ button:hover:not(:disabled) {
 }
 
 button:focus-visible {
-  outline: 3px solid rgba(255, 43, 156, 0.34);
+  outline: 3px solid rgba(212, 222, 149, 0.34);
   outline-offset: 3px;
 }
 
 button:disabled {
-  color: rgba(246, 214, 255, 0.42);
+  color: rgba(186, 192, 149, 0.42);
   background: rgba(255, 255, 255, 0.08);
   cursor: not-allowed;
 }
 
 button.complete {
-  border-color: rgba(72, 255, 189, 0.54);
-  color: #041c16;
+  border-color: rgba(186, 192, 149, 0.54);
+  color: #171a0d;
   background: var(--success);
 }
 
