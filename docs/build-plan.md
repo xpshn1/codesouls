@@ -37,6 +37,21 @@ The MVP should include:
 - hints that point to prerequisite drills
 - a visible long-term AI engineering path
 
+### Status
+
+The MVP is built (v1): the concept map, 15 drills, 5 campaign bosses, and a
+final boss, all with real tests. It also has XP, ranks, deaths, boss HP,
+failure-driven routing from boss tests to prerequisite drills, and saved
+progress. Every exercise is in JavaScript and runs in a Web Worker, so no
+server-side sandbox is needed yet.
+
+Next candidates:
+
+- Python exercises via Pyodide for the data and ML campaigns
+- more drills per campaign, and a second boss per campaign
+- spaced-repetition "revisit" prompts for drills cleared long ago
+- accounts and cloud sync once the loop is proven fun
+
 ## Learning Campaigns
 
 ### Campaign 1: Programming Foundations
