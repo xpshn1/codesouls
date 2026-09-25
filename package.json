@@ -7,10 +7,17 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.5",
+    "@codemirror/language": "^6.12.4",
+    "@codemirror/state": "^6.7.6",
+    "@codemirror/view": "^6.43.13",
     "@fontsource/geist-sans": "^5.2.5",
+    "@lezer/highlight": "^1.2.4",
+    "@uiw/react-codemirror": "^4.25.12",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "typeface-hk-grotesk": "^1.0.0"
@@ -27,6 +34,7 @@
     "globals": "^17.5.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
-    "vite": "^8.0.10"
+    "vite": "^8.0.10",
+    "vitest": "^5.0.1"
   }
 }
