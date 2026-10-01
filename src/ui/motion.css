@@ -1,0 +1,324 @@
+/* Motion as feedback (spec FR-21): every animation ≤ 1.2 s, the death and victory screens ≤ 2.5 s.
+   Reduced motion makes every change instant (FR-22). */
+
+/* Screen change */
+.screen-enter {
+  animation: rise-in 420ms ease-out both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hub chunks arrive in sequence */
+.chunk {
+  animation: rise-in 500ms ease-out both;
+}
+
+/* Stat bars fill */
+.xp-fill,
+.meter-fill {
+  transition: width 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.rank-up {
+  animation: rank-up 1200ms ease-out both;
+}
+
+@keyframes rank-up {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.96);
+    box-shadow: 0 0 0 rgba(227, 165, 59, 0);
+  }
+  30% {
+    opacity: 1;
+    transform: none;
+    box-shadow: 0 0 28px rgba(227, 165, 59, 0.55);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 rgba(227, 165, 59, 0);
+  }
+}
+
+/* Souls glow when gained */
+.souls-banked,
+.souls-unbanked {
+  transition: text-shadow 600ms ease, color 600ms ease;
+}
+
+.glow {
+  text-shadow: 0 0 14px rgba(227, 165, 59, 0.9);
+  color: #f6cf7a;
+}
+
+.souls-gain {
+  animation: soul-rise 1000ms ease-out both;
+}
+
+@keyframes soul-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    text-shadow: 0 0 0 transparent;
+  }
+  40% {
+    opacity: 1;
+    transform: none;
+    text-shadow: 0 0 16px rgba(227, 165, 59, 0.9);
+  }
+  100% {
+    text-shadow: 0 0 0 transparent;
+  }
+}
+
+/* Health: the red drains quickly, the pale chip follows */
+.health-fill {
+  transition: width 260ms ease-out;
+}
+
+.health-chip {
+  transition: width 700ms ease-in 300ms;
+}
+
+.boss-fight.shaking .health-track {
+  animation: hit 240ms ease-out 0s 4;
+}
+
+@keyframes hit {
+  0%,
+  100% {
+    transform: none;
+  }
+  30% {
+    transform: translateX(-2px);
+  }
+  60% {
+    transform: translateX(2px);
+  }
+}
+
+/* Tests resolve one by one */
+.test:not(.test-pending) {
+  animation: resolve 260ms ease-out both;
+}
+
+@keyframes resolve {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.test-pass {
+  box-shadow: inset 2px 0 0 var(--pass);
+}
+
+.test-fail,
+.test-error,
+.test-timeout {
+  box-shadow: inset 2px 0 0 var(--fail);
+}
+
+/* YOU DIED: slow fade, letters settle (≤ 2.5 s) */
+.overlay.death {
+  animation: fade 900ms ease-out both;
+}
+
+.death-title {
+  animation: died 2400ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+@keyframes died {
+  0% {
+    opacity: 0;
+    transform: scale(1.12);
+    letter-spacing: 0.3em;
+    filter: blur(4px);
+  }
+  55% {
+    opacity: 1;
+    filter: none;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    letter-spacing: 0.12em;
+  }
+}
+
+.death-body {
+  animation: rise-in 600ms ease-out 1100ms both;
+}
+
+/* Victory (≤ 2.5 s) */
+.overlay.victory {
+  animation: fade 700ms ease-out both;
+}
+
+.victory-title {
+  animation: victory 2000ms ease-out both;
+}
+
+@keyframes victory {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 0 transparent;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 40px rgba(227, 165, 59, 0.6);
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 18px rgba(227, 165, 59, 0.3);
+  }
+}
+
+.victory-body {
+  animation: rise-in 600ms ease-out 900ms both;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Wrong prediction */
+.shake {
+  animation: shake 360ms ease-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: none;
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+
+/* Bonfire flicker (looping gently) */
+.bonfire-card.lit .flame,
+.bonfire .flame {
+  animation: flicker 1200ms ease-in-out infinite alternate;
+}
+
+.flame.f2 {
+  animation-delay: -300ms;
+}
+
+.flame.f3 {
+  animation-delay: -650ms;
+}
+
+.flame.f4 {
+  animation-delay: -900ms;
+}
+
+@keyframes flicker {
+  0% {
+    transform: scaleY(1) skewX(0deg);
+  }
+  35% {
+    transform: scaleY(1.08) skewX(-2deg);
+  }
+  70% {
+    transform: scaleY(0.95) skewX(2deg);
+  }
+  100% {
+    transform: scaleY(1.04) skewX(-1deg);
+  }
+}
+
+.bonfire-card.lit .bonfire-glow,
+.bonfire-scene::after {
+  animation: glow-breathe 1200ms ease-in-out infinite alternate;
+}
+
+@keyframes glow-breathe {
+  from {
+    opacity: 0.75;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ember {
+  animation: ember-rise 1200ms ease-out infinite;
+}
+
+.ember.e1 {
+  margin-left: -14px;
+}
+
+.ember.e2 {
+  margin-left: 10px;
+  animation-delay: 400ms;
+}
+
+.ember.e3 {
+  margin-left: -2px;
+  animation-delay: 800ms;
+}
+
+@keyframes ember-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-110px) translateX(8px);
+  }
+}
+
+.review-item {
+  animation: rise-in 420ms ease-out both;
+}
+
+.loading-flame {
+  animation: flicker 1200ms ease-in-out infinite alternate;
+}
+
+/* Reduced motion: every change is instant (FR-22). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0ms !important;
+    transition-delay: 0ms !important;
+  }
+}

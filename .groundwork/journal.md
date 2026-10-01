@@ -1,0 +1,1 @@
+- 2026-10-01 03:09 (kalyanmolugooru@gmail.com): RFC-0001 drafted; waiting for owner approval. Then spec; then design mockups on canvas https://claude.ai/artifact/8YaVy35MwtmTsAHeKWT1NE (empty, 4 screens planned: hub, arena, drill, bonfire).

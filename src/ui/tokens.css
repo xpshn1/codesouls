@@ -1,0 +1,151 @@
+/* Design tokens — spec FR-19. */
+:root {
+  --ground: #0d0c0b;
+  --panel: #16130f;
+  --raised: #1e1a15;
+  --line: #2e2923;
+  --text: #ece5d8;
+  --muted: #a89f90;
+  --ember: #e3a53b;
+  --blood: #c23b2e;
+  --pass: #8fb573;
+  --fail: #e0705c;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-code: 'IBM Plex Mono', Consolas, monospace;
+
+  --radius: 6px;
+  color-scheme: dark;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--ground);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 1280px;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(227, 165, 59, 0.06), transparent 70%),
+    var(--ground);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+  line-height: 1.15;
+}
+
+p {
+  margin: 0;
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-code);
+  font-size: 15px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--raised);
+  font-weight: 500;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--muted);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-ember {
+  border-color: var(--ember);
+  background: rgba(227, 165, 59, 0.12);
+  color: var(--ember);
+}
+
+.btn-ember:hover:not(:disabled) {
+  background: rgba(227, 165, 59, 0.2);
+  border-color: var(--ember);
+}
+
+.btn-blood {
+  border-color: var(--blood);
+  background: rgba(194, 59, 46, 0.14);
+  color: #f0a79d;
+}
+
+.btn-blood:hover:not(:disabled) {
+  background: rgba(194, 59, 46, 0.24);
+  border-color: var(--fail);
+}
+
+.btn-ghost {
+  background: transparent;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.kicker {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

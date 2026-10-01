@@ -1,0 +1,1184 @@
+/* Layout and components — calm dark souls-like (spec FR-19, FR-20). Motion lives in motion.css. */
+
+.app {
+  min-height: 100vh;
+}
+
+.small {
+  font-size: 14px;
+}
+
+.ember-text {
+  color: var(--ember);
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--ember);
+  text-decoration: underline;
+}
+
+.runner-status {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--raised);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------- Loading ---------- */
+.loading {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.loading-flame {
+  color: var(--ember);
+  filter: drop-shadow(0 0 18px rgba(227, 165, 59, 0.55));
+}
+
+.loading-flame.out {
+  color: var(--muted);
+  filter: none;
+}
+
+.loading-title {
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.loading-text {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.loading-failed {
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+}
+
+/* ---------- Shared screen frame ---------- */
+.hub,
+.boss-fight,
+.drill,
+.bonfire {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px 40px 64px;
+}
+
+.section-head {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.section-head h2 {
+  font-size: 34px;
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+  display: grid;
+  grid-template-columns: auto minmax(260px, 1fr) auto auto;
+  align-items: center;
+  gap: 36px;
+  padding: 16px 24px;
+  margin-bottom: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(30, 26, 21, 0.9), rgba(22, 19, 15, 0.9));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(227, 165, 59, 0.5);
+  border-radius: 50%;
+  color: var(--ember);
+}
+
+.brand-name {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.xp {
+  position: relative;
+  display: grid;
+  gap: 6px;
+}
+
+.xp-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.xp-rank {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ember);
+}
+
+.xp-num {
+  font-family: var(--font-code);
+  font-size: 14px;
+}
+
+.xp-track,
+.meter-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--raised);
+  overflow: hidden;
+}
+
+.xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8a6223, var(--ember));
+  box-shadow: 0 0 12px rgba(227, 165, 59, 0.45);
+}
+
+.rank-up {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 30;
+  padding: 8px 14px;
+  border: 1px solid var(--ember);
+  border-radius: var(--radius);
+  background: var(--raised);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.rank-up strong {
+  color: var(--ember);
+  font-family: var(--font-display);
+  font-size: 20px;
+}
+
+.souls {
+  display: grid;
+  gap: 2px;
+  justify-items: end;
+}
+
+.souls-banked {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ember);
+  font-family: var(--font-code);
+}
+
+.souls-banked strong {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.souls-unbanked {
+  font-family: var(--font-code);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.souls-unbanked.has {
+  color: #c99a4a;
+}
+
+.death-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--fail);
+  font-family: var(--font-code);
+}
+
+.death-count strong {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* ---------- Banner / notices ---------- */
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  border-radius: var(--radius);
+}
+
+.banner-bad {
+  border: 1px solid var(--blood);
+  background: rgba(194, 59, 46, 0.1);
+}
+
+.banner-actions,
+.backup-actions,
+.outcome-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.notice {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.notice-ok {
+  color: var(--pass);
+}
+
+.notice-bad {
+  color: var(--fail);
+}
+
+/* ---------- Hub ---------- */
+.hub-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(300px, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.hub-side {
+  display: grid;
+  gap: 20px;
+  position: sticky;
+  top: 24px;
+}
+
+.stats-card,
+.backup-card {
+  display: grid;
+  gap: 14px;
+  padding: 20px 22px;
+}
+
+.stats-card h2,
+.backup-card h2,
+.bonfire-card h2 {
+  font-size: 26px;
+}
+
+.meter {
+  display: grid;
+  gap: 6px;
+}
+
+.meter-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.meter-head strong {
+  font-family: var(--font-code);
+  font-weight: 500;
+}
+
+.meter-fill {
+  height: 100%;
+}
+
+.meter-fill.tone-ember {
+  background: var(--ember);
+}
+
+.meter-fill.tone-pass {
+  background: var(--pass);
+}
+
+/* Slice map */
+.slice-map {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.chunk {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.chunk-rail {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.chunk-rail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: -8px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--line), rgba(46, 41, 35, 0.3));
+}
+
+.chunk:last-child .chunk-rail::before {
+  bottom: 40%;
+}
+
+.chunk-orb {
+  position: relative;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--muted);
+  border-radius: 50%;
+  background: var(--ground);
+}
+
+.chunk-orb.lit {
+  border-color: var(--ember);
+  background: var(--ember);
+  box-shadow: 0 0 14px rgba(227, 165, 59, 0.7);
+}
+
+.chunk-body {
+  display: grid;
+  gap: 14px;
+  padding-bottom: 28px;
+}
+
+.chunk-head h3 {
+  font-size: 28px;
+  margin: 2px 0 4px;
+}
+
+.drill-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.drill-node {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  min-height: 96px;
+  padding: 12px 14px;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+.drill-node:hover {
+  border-color: var(--muted);
+  transform: translateY(-2px);
+}
+
+.drill-node.passed {
+  background: linear-gradient(180deg, rgba(143, 181, 115, 0.08), var(--panel));
+  border-color: rgba(143, 181, 115, 0.4);
+}
+
+.drill-node-type {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.drill-node-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.drill-node-foot {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.drill-node.passed .drill-node-foot {
+  color: var(--pass);
+}
+
+.boss-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  text-align: left;
+  border: 1px solid rgba(194, 59, 46, 0.45);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(ellipse 60% 120% at 0% 50%, rgba(194, 59, 46, 0.14), transparent 70%),
+    var(--panel);
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.boss-card:hover {
+  border-color: var(--fail);
+  box-shadow: 0 0 0 1px rgba(194, 59, 46, 0.35), 0 10px 30px -18px rgba(194, 59, 46, 0.8);
+  transform: translateY(-2px);
+}
+
+.boss-card.final {
+  padding: 22px 24px;
+  border-color: rgba(227, 165, 59, 0.55);
+  background:
+    radial-gradient(ellipse 60% 140% at 0% 50%, rgba(227, 165, 59, 0.12), transparent 70%),
+    var(--panel);
+}
+
+.boss-card.beaten {
+  border-color: rgba(227, 165, 59, 0.4);
+  background: var(--panel);
+}
+
+.boss-card-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  color: var(--fail);
+}
+
+.boss-card.final .boss-card-icon,
+.boss-card.beaten .boss-card-icon {
+  color: var(--ember);
+}
+
+.boss-card-text {
+  display: grid;
+  gap: 2px;
+}
+
+.boss-card-name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.boss-card.final .boss-card-name {
+  font-size: 32px;
+}
+
+.boss-card-epithet {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--muted);
+}
+
+.boss-card-meta {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.boss-card-deaths {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--fail);
+  font-family: var(--font-code);
+}
+
+.boss-card-souls {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #c99a4a;
+}
+
+.boss-card-xp {
+  font-family: var(--font-code);
+  color: var(--muted);
+}
+
+.beaten-tag {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--ember);
+}
+
+/* Bonfire card */
+.bonfire-card {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 26px 22px 24px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.bonfire-card.lit {
+  border-color: rgba(227, 165, 59, 0.45);
+}
+
+.bonfire-glow {
+  position: absolute;
+  inset: auto -20% -60% -20%;
+  height: 120%;
+  background: radial-gradient(ellipse at 50% 100%, rgba(227, 165, 59, 0.22), transparent 60%);
+  pointer-events: none;
+}
+
+.bonfire-card.quiet .bonfire-glow {
+  opacity: 0.35;
+}
+
+.bonfire-card > * {
+  position: relative;
+}
+
+/* Fire, drawn with layered shapes */
+.fire {
+  position: relative;
+  width: 44px;
+  height: 56px;
+}
+
+.fire.large {
+  width: 120px;
+  height: 150px;
+}
+
+.flame {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  border-radius: 50% 50% 45% 45% / 65% 65% 35% 35%;
+  transform-origin: 50% 100%;
+}
+
+.flame.f1 {
+  width: 70%;
+  height: 92%;
+  margin-left: -35%;
+  background: radial-gradient(ellipse at 50% 85%, #f6c768, #d9822b 55%, rgba(194, 59, 46, 0.2) 80%, transparent 82%);
+}
+
+.flame.f2 {
+  width: 46%;
+  height: 70%;
+  margin-left: -32%;
+  background: radial-gradient(ellipse at 50% 85%, #f8d58a, #e3a53b 60%, transparent 75%);
+  opacity: 0.85;
+}
+
+.flame.f3 {
+  width: 40%;
+  height: 58%;
+  margin-left: -6%;
+  background: radial-gradient(ellipse at 50% 85%, #fff1c9, #f1b54e 55%, transparent 75%);
+  opacity: 0.9;
+}
+
+.flame.f4 {
+  width: 26%;
+  height: 40%;
+  margin-left: -13%;
+  background: radial-gradient(ellipse at 50% 80%, #fffbe9, #f6cf7a 60%, transparent 78%);
+}
+
+.bonfire-card.quiet .flame {
+  filter: saturate(0.4) brightness(0.6);
+}
+
+.ember {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #f6c768;
+  box-shadow: 0 0 6px #e3a53b;
+  opacity: 0;
+}
+
+/* ---------- Fight / drill frame ---------- */
+.fight-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  min-height: 40px;
+}
+
+.fight-title {
+  display: grid;
+  gap: 2px;
+}
+
+.fight-title h1 {
+  font-size: 46px;
+  font-weight: 600;
+}
+
+.health {
+  display: grid;
+  gap: 6px;
+  margin: 4px 0 26px;
+}
+
+.health-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.health-track {
+  position: relative;
+  height: 14px;
+  border: 1px solid rgba(194, 59, 46, 0.5);
+  border-radius: 2px;
+  background: #120d0b;
+  overflow: hidden;
+}
+
+.health-chip,
+.health-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+}
+
+.health-chip {
+  background: #e8c27a;
+}
+
+.health-fill {
+  background: linear-gradient(180deg, #d9493a, #9a2a20);
+}
+
+.fight-grid,
+.drill-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(0, 1.7fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.fight-brief,
+.drill-brief {
+  display: grid;
+  gap: 20px;
+  padding: 22px 24px;
+}
+
+.prose {
+  display: grid;
+  gap: 10px;
+}
+
+.prose p,
+.prose li {
+  line-height: 1.6;
+}
+
+.prose ul,
+.examples ul {
+  margin: 6px 0 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 4px;
+}
+
+.prose code,
+.examples code,
+.test-detail code {
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--raised);
+  font-size: 14px;
+}
+
+.examples,
+.hints {
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.hint {
+  padding: 10px 14px;
+  border-left: 2px solid var(--ember);
+  background: rgba(227, 165, 59, 0.06);
+  font-style: italic;
+}
+
+.fight-work,
+.drill-work {
+  display: grid;
+  gap: 14px;
+}
+
+.editor-frame {
+  min-height: 300px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #100e0c;
+}
+
+.editor-frame.read-only {
+  min-height: 0;
+}
+
+.code-editor {
+  height: 100%;
+}
+
+.code-editor .cm-editor {
+  min-height: 300px;
+}
+
+.read-only .code-editor .cm-editor {
+  min-height: 0;
+}
+
+.action-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.results {
+  display: grid;
+  gap: 12px;
+  padding: 18px 20px;
+}
+
+.tests {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.test {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background: var(--raised);
+}
+
+.test-mark {
+  display: grid;
+  place-items: center;
+  height: 22px;
+}
+
+.test-pass .test-mark {
+  color: var(--pass);
+}
+
+.test-fail .test-mark,
+.test-error .test-mark,
+.test-timeout .test-mark {
+  color: var(--fail);
+}
+
+.test-pending {
+  opacity: 0.55;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.test-call {
+  font-size: 14px;
+}
+
+.test-detail {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.error-box {
+  padding: 12px 14px;
+  border: 1px solid rgba(224, 112, 92, 0.45);
+  border-radius: 4px;
+  background: rgba(224, 112, 92, 0.07);
+}
+
+.error-line {
+  color: var(--fail);
+  font-family: var(--font-code);
+  font-size: 14px;
+}
+
+.error-raw {
+  margin: 8px 0 0;
+  white-space: pre-wrap;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stdout pre {
+  margin: 6px 0 0;
+  padding: 10px 12px;
+  border-radius: 4px;
+  background: #100e0c;
+  white-space: pre-wrap;
+  max-height: 220px;
+  overflow: auto;
+}
+
+/* Drill specifics */
+.drill-reward {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ember);
+  font-family: var(--font-code);
+}
+
+.why-banner {
+  margin: -4px 0 20px;
+  padding: 12px 16px;
+  border: 1px solid rgba(194, 59, 46, 0.4);
+  border-radius: var(--radius);
+  background: rgba(194, 59, 46, 0.08);
+}
+
+.predict-label {
+  font-weight: 500;
+}
+
+.predict-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #100e0c;
+  color: var(--text);
+  font-family: var(--font-code);
+  font-size: 15px;
+  resize: vertical;
+}
+
+.predict-input:focus {
+  outline: none;
+  border-color: var(--ember);
+}
+
+.reorder {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.reorder-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #100e0c;
+  transition: transform 180ms ease;
+}
+
+.reorder-num {
+  font-family: var(--font-code);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.reorder-line {
+  white-space: pre;
+}
+
+.icon-btn {
+  min-height: 36px;
+  width: 36px;
+  padding: 0;
+}
+
+.outcome {
+  display: grid;
+  gap: 8px;
+  padding: 18px 20px;
+  border-radius: var(--radius);
+}
+
+.outcome-pass {
+  border: 1px solid rgba(143, 181, 115, 0.5);
+  background: rgba(143, 181, 115, 0.07);
+}
+
+.outcome-fail {
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.outcome-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.souls-gain {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ember);
+}
+
+/* ---------- Overlays ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 28px;
+  padding: 40px;
+  overflow: auto;
+}
+
+.overlay.death {
+  background: rgba(5, 4, 4, 0.94);
+}
+
+.overlay.victory {
+  background: rgba(8, 7, 5, 0.92);
+}
+
+.death-band,
+.victory-band {
+  width: 100vw;
+  padding: 26px 0;
+  text-align: center;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.75) 20%, rgba(0, 0, 0, 0.75) 80%, transparent);
+}
+
+.death-title {
+  font-size: 104px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--blood);
+}
+
+.victory-title {
+  font-size: 84px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--ember);
+}
+
+.death-body,
+.victory-body {
+  width: min(760px, 100%);
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  text-align: center;
+}
+
+.death-sub {
+  font-size: 18px;
+}
+
+.death-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  gap: 8px;
+}
+
+.death-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.death-foot {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.souls-wait {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #c99a4a;
+}
+
+.hint-new {
+  color: var(--ember);
+  font-style: italic;
+}
+
+.victory-gains {
+  display: flex;
+  gap: 56px;
+}
+
+.victory-gains > div {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+}
+
+.gain {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-code);
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--ember);
+}
+
+.victory-rank strong {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--ember);
+}
+
+/* ---------- Bonfire screen ---------- */
+.bonfire-scene {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 220px;
+  margin: 0 auto 28px;
+}
+
+.bonfire-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 40% 60% at 50% 80%, rgba(227, 165, 59, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+.sword-in-fire {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 4px;
+  height: 150px;
+  margin-left: -2px;
+  background: linear-gradient(180deg, #8c8478, #4a443c);
+  transform: rotate(-8deg);
+  transform-origin: 50% 100%;
+}
+
+.sword-in-fire::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: -10px;
+  width: 24px;
+  height: 4px;
+  background: #6b645a;
+}
+
+.bonfire-empty {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.review-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: min(760px, 100%);
+  display: grid;
+  gap: 10px;
+}
+
+.review-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.review-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+}

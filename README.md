@@ -1,83 +1,56 @@
 # Code Souls
 
-Code Souls is a gamified learning app for becoming an AI engineer from a
-beginner starting point. Learners face difficult "boss" challenges, retreat into
-smaller prerequisite drills when stuck, gain XP, then return with the exact
-skills needed to solve the bigger problem.
+A game-style app for learning Python on the way to AI engineering. You face a boss before you
+feel ready, fail, are shown exactly which skill you were missing, train it in a short drill, and
+return to win. Skills you pass come back for review at the bonfire after 1, 3, 7 and 21 days.
 
-The end goal is not only learning syntax. The end goal is becoming able to
-build, debug, evaluate, and deploy AI-powered software while understanding the
-math and computer science ideas underneath it.
+Everything runs in your browser: your code is real Python (Pyodide), and nothing is sent anywhere.
 
-## Current Prototype
+## The first slice: Python Foundations
 
-The first version is a React + TypeScript app that demonstrates the core loop:
+| Chunk | Drills | Boss |
+| --- | --- | --- |
+| Values and Variables | 4 | The Hollow Variable |
+| Lists and Loops | 5 | Warden of Loops |
+| Functions and Return Values | 4 | The Function Knight |
+| Edge Cases | 3 | Damage Calculator (final) |
 
-- a boss puzzle that requires several prerequisite concepts
-- smaller drills for beginner programming foundations
-- XP gained by completing drills
-- a readiness meter that unlocks the boss puzzle
+- **Run examples** is free. **Challenge boss** runs every test, including hidden ones; a failure is a death.
+- Each failed boss test points to one drill. Hints unlock after your 1st and 3rd death.
+- Drills give **souls**, held unbanked until that chunk's boss falls. Bosses and reviews give **XP**, which sets your rank:
+  Hollow → Kindled (100) → Ashen (250) → Unkindled Lord (450).
+- Progress saves in the browser. Use Export / Import on the hub for a backup file.
 
-The current UI still starts with programming basics because AI engineering needs
-those fundamentals first.
+## Run it
 
-## How To Run
+Needs Node.js 22.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open the local URL printed by Vite.
+Open the address it prints in a desktop browser. The first load starts Python, which takes a few seconds.
 
-## Product Direction
+## Check it
 
-The app should be built as an AI engineering campaign with connected paths:
+```bash
+npm test       # content, Python engine, game rules, saving, screens
+npm run lint
+npm run build
+```
 
-1. **Programming foundations**
-   Variables, data structures, functions, debugging, tests, Git, APIs, and
-   deployment.
+`npm test` runs every drill and boss with real Python: each model answer must pass, each starting
+point must fail, and every boss test must point to a real drill.
 
-2. **Math for AI**
-   Probability, statistics, linear algebra, calculus intuition, optimization,
-   and evaluation metrics.
+## Writing content
 
-3. **Data and machine learning**
-   Data cleaning, feature engineering, model training, validation, overfitting,
-   and classical ML algorithms.
+Content is plain data in `src/content/` (one file per chunk); the shapes are in `src/content/types.ts`.
+A test is `{ id, call, expected, setup? }`: `call` and `expected` are Python expressions, and the
+optional `setup` runs before the learner's code (for example `log = []`). After changing content,
+run `npm test`.
 
-4. **Deep learning**
-   Neural networks, embeddings, transformers, fine-tuning, inference, and model
-   limitations.
+## Project documents
 
-5. **AI tools and applications**
-   Prompting, agents, retrieval-augmented generation, vector databases, model
-   APIs, evaluation, safety checks, and production monitoring.
-
-6. **Boss projects**
-   Larger projects that combine several paths, such as building a chatbot with
-   retrieval, evaluating model outputs, deploying an AI API, or debugging a
-   failed training run.
-
-## Recommended Stack
-
-- **React + TypeScript** for the app interface
-- **Vite** for fast local development
-- **Monaco Editor** later for in-browser code editing
-- **Vitest** later for puzzle test cases
-- **Local storage** first for progress
-- **Python sandboxing** later for AI and data exercises
-- **Supabase or Postgres** later for accounts, saved progress, and analytics
-- **Model provider APIs** later for AI-tooling missions
-
-## Learning Goal
-
-The app should eventually teach a learner to:
-
-- write and debug useful programs
-- understand probability, statistics, and core ML concepts
-- work with data and evaluate model performance
-- build simple machine learning and deep learning workflows
-- use AI coding tools and model APIs effectively
-- design retrieval and agent-style AI applications
-- test, monitor, and deploy AI-powered software
+`PROJECT.md` (why and for whom), `ARCHITECTURE.md` (how it fits together), `CONSTITUTION.md` (rules),
+`DECISIONS/` (approved proposals) and `specs/` (feature specs, plans, tasks and test checks).

@@ -1,5 +1,10 @@
 # Build Plan
 
+> **Status:** the original long-term vision. The first slice is now decided by
+> `DECISIONS/RFC-0001-python-foundations-slice.md` and specified in
+> `specs/001-python-foundations-slice/`. Where they differ (for example, learner code now runs
+> as real Python in the browser), those documents win.
+
 ## Core Idea
 
 Code Souls should teach the path from beginner programmer to AI engineer through

@@ -1,0 +1,22 @@
+{
+  "DECISIONS\\RFC-0001-python-foundations-slice.md": {
+    "hash": "d00e92815c8b79e3518d4265a7e2d2f62ccd63e8f3d7bb2e659c3b2d6fb539b7",
+    "signers": [
+      {
+        "who": "kalyanmolugooru@gmail.com",
+        "at": "2026-10-01T03:14:33-0400"
+      }
+    ],
+    "changes": 0
+  },
+  "specs\\001-python-foundations-slice\\spec.md": {
+    "hash": "b13ce2e09b548dd046dea231eb138c9c588905a893944385ad0843c0a39645cc",
+    "signers": [
+      {
+        "who": "kalyanmolugooru@gmail.com",
+        "at": "2026-10-01T03:18:45-0400"
+      }
+    ],
+    "changes": 0
+  }
+}
